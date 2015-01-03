@@ -91,16 +91,12 @@ std::int32_t main( std::int32_t argc, char * argv[] )
 
     if( get_value( flags, "-hmac", m_hmac ) )
     {
-        if( m_hmac == "sha1"   || m_hmac == "SHA1"   ) {hmac_type = 160;}
-        if( m_hmac == "sha256" || m_hmac == "SHA256" ) {hmac_type = 256;}
-        if( m_hmac == "sha512" || m_hmac == "SHA512" ) {hmac_type = 512;}
+        if     ( m_hmac == "sha1"   || m_hmac == "SHA1"   ) {hmac_type = 160;}
+        else if( m_hmac == "sha256" || m_hmac == "SHA256" ) {hmac_type = 256;}
+        else if( m_hmac == "sha512" || m_hmac == "SHA512" ) {hmac_type = 512;}
 
-        if( hmac_type == 160 || hmac_type == 256 || hmac_type == 512 )
-        {
-            // continue
-        }
-        else
-        {
+        else 
+        { 
             std::cerr << "The -hmac flag must be sha1, sha256 or sha512.\n";
             return 1;
         }
