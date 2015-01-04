@@ -53,7 +53,7 @@ so that HMAC-SHA512 is used rather than HMAC-SHA1. The -hmac flag accepts sha1
 
     oathgen -s /home/user/.oathgen/base32_test_secret.txt -f -hmac sha512 
 
-* The Test Secret (the unencoded secret is the HMAC key)
+* The HMAC-SHA1 Test Secret (See TOTP Errata for all three test secrets) 
 
     B32:       GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ 
     Hex:       3132333435363738393031323334353637383930 
@@ -66,14 +66,15 @@ the HMAC message. The TOTP RFC states, "Keys SHOULD be of the length of the
 HMAC output to facilitate interoperability." This means that the decoded secret
 (which is the key) should be 20 bytes for HMAC-SHA1, 32 bytes for HMAC-SHA256
 and 64 bytes for HMAC-SHA512. However, many TOTP implementations, use smaller
-keys. In fact, 10 byte secrets seem more common than 20 byte secrets. Of the
-five services I tested, three used 10 byte secrets. The other two services
-used 20 byte secrets, both were Google. I wrote an 'extend' function (which
-is a hack) to take a 20 byte secret and extend it for use with HMAC-SHA256
-and HMAC-SHA512. While this does extend a 20 byte secret to pass the TOTP RFC
-test cases, it will likely fail in real-world scenarios with implementations
-that use smaller secrets. Really, the RFC should mandate the secret size to
-avoid this sort of thing.
+keys. In fact, 10 byte secrets seem more common than 20 byte secrets for TOTP
+HMAC-SHA1. Of the five services I tested, three used 10 byte secrets. The other
+two services used 20 byte secrets, both were Google. Really, the RFC should
+mandate the secret size to avoid this sort of thing.
+
+A friend just pointed out that the RFC has errata. This explains the extension
+confusion. There are three different test secrets, not one.
+
+    http://www.rfc-editor.org/errata_search.php?rfc=6238.  
 
 When storing secrets in text files, only store one secret per file. The secret 
 should be on one line by itself with no spaces or dashes between the 

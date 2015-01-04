@@ -37,7 +37,7 @@ std::string       m_ts               = "";
 std::string       m_sec              = "";
 std::string       secret             = "";
 
-const std::string version            = "oathgen version 1.0";
+const std::string version            = "oathgen version 1.0.1";
 const std::string help               = version + " flags:\n \
 -c     set the HOTP counter value (requires -hotp flag)\n \
 -d     show verbose debug output\n \

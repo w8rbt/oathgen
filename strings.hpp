@@ -88,26 +88,3 @@ const std::string decode( const std::string& secret, const bool hex_encode )
 
 	return decoded;
 }
-
-const std::string extend( const std::string& decoded, const std::int32_t hmac_type=160 )
-{
-    // Depending on hmac_type, extend the secret.
-    // 20 bytes for SHA1, 32 bytes SHA256, 64 bytes SHA512
-
-    // This assumes a 20 byte secret. In the real world, that's a bad assumption.
-    // See readme.txt for more details.
-    std::string extended;
-
-    if( hmac_type == 160) {extended = decoded;}
-    if( hmac_type == 256) {extended = decoded + decoded.substr(0,12);}
-    if( hmac_type == 512) {extended = decoded + decoded + decoded + decoded.substr(0,4);}
-
-    if( DEBUG )
-    {
-        std::cout << "extend - hmac_type: "            << hmac_type       << "\n";
-        std::cout << "extend - extended secret: "      << extended        << "\n";
-        std::cout << "extend - extended secret size: " << extended.size() << "\n";
-    }
-
-    return extended;
-}

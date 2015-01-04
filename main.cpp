@@ -136,8 +136,8 @@ std::int32_t main( std::int32_t argc, char * argv[] )
             secret = m_sec;
         }
         
-        if( do_hex ) {decoded = extend( decode( secret, true ), hmac_type );}
-        else          {decoded = extend( decode( secret, false ), hmac_type );}
+        if( do_hex ) {decoded = decode( secret, true ) ;}
+        else         {decoded = decode( secret, false ) ;}
     }
 
     // Sanity Checks
