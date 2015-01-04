@@ -25,6 +25,7 @@ std::int32_t      hmac_type          = 160;
 std::int64_t      hotp_count         = 0;
 std::int32_t      length             = 6;
 std::int32_t      otp                = 0;
+std::int64_t      time_now           = 0;
 std::int64_t      time_step          = 30;
 std::int64_t      unix_epoch         = 0;
 
@@ -33,15 +34,16 @@ std::string       m_count            = "";
 std::string       m_epoch            = "";
 std::string       m_hmac             = "";
 std::string       m_len              = "";
+std::string       m_tn               = "";
 std::string       m_ts               = "";
 std::string       m_sec              = "";
 std::string       secret             = "";
 
-const std::string version            = "oathgen version 1.0.1";
+const std::string version            = "oathgen version 1.0.2";
 const std::string help               = version + " flags:\n \
 -c     set the HOTP counter value (requires -hotp flag)\n \
 -d     show verbose debug output\n \
--e     set the Unix epoch time in seconds (default is 0)\n \
+-e     set the TOTP Unix epoch time in seconds (default is 0)\n \
 -f     read the secret from a text file rather than the command line\n \
 -h     show this help message\n \
 -hex   use hex to decode the secret (default is base32)\n \
@@ -50,5 +52,6 @@ const std::string help               = version + " flags:\n \
 -l     set the length of OTP (6, 7 or 8 digits) default is 6\n \
 -s     the hex or base32 encoded secret or the file that contains it\n \
 -t     run tests (use with -d flag for verbose output)\n \
--ts    set the TOTP time step duration (default is 30)\n \
+-tn    set the TOTP time in seconds (default is time now)\n \
+-ts    set the TOTP time step duration in seconds (default is 30)\n \
 -v     show version";

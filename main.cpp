@@ -112,6 +112,11 @@ std::int32_t main( std::int32_t argc, char * argv[] )
         time_step = strtonum<std::int64_t>( m_ts );
     }
 
+    if( get_value( flags, "-tn", m_tn ) )
+    {
+        time_now = strtonum<std::int64_t>( m_tn );
+    }
+
     if( get_value( flags, "-s", m_sec ) )
     {
         if ( do_file )
@@ -173,7 +178,14 @@ std::int32_t main( std::int32_t argc, char * argv[] )
     }
     else
     {
-        otp = truncate( binary( totp( decoded, std::time( nullptr ), time_step, unix_epoch, hmac_type ) ), length );
+        if( time_now )
+        {
+            otp = truncate( binary( totp( decoded, time_now, time_step, unix_epoch, hmac_type ) ), length );
+        }
+        else
+        {
+            otp = truncate( binary( totp( decoded, std::time( nullptr ), time_step, unix_epoch, hmac_type ) ), length );
+        }
     }
 
     std::cout << std::setfill( '0' ) << std::setw( length ) << otp << "\n";
