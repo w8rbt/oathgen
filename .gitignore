@@ -3,4 +3,5 @@ oathgen_linux_x86_64_debug
 oathgen_linux_i686
 oathgen_linux_i686_debug
 oathgen_openbsd_i386
+oathgen_openbsd_sparc64
 *.bak

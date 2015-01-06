@@ -36,6 +36,8 @@ const std::vector<std::uint8_t> hotp( const std::string& secret,
     std::uint8_t counter_array[ sizeof(std::int64_t) ];
 
     *reinterpret_cast<std::int64_t*>(counter_array) = counter;
+    // The following line breaks on big endian systems...
+    // Comment it out when using Sparc64, etc. until a fix is added
     std::reverse( std::begin(counter_array), std::end(counter_array) );
 
     if( DEBUG )
