@@ -170,6 +170,12 @@ std::int32_t main( std::int32_t argc, char * argv[] )
         return 1;
     }
 
+    if( do_hotp && time_now )
+    {
+        std::cerr << "-tn may not be used with -hotp.\n";
+        return 1;
+    }
+
     // Do HOTP or TOTP
 
     if ( do_hotp && hmac_type == 160 )

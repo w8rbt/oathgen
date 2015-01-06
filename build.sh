@@ -28,7 +28,7 @@ if [ $1 == 'Linux_debug' -o $1 == 'linux_debug' ]
 fi
 
 if [ $1 == 'OpenBSD' -o $1 == 'openbsd' ]
-    then eg++ -static -std=c++11 -Wall -Wextra -Werror \
+    then eg++ -static -std=c++0x -Wall -Wextra -Werror \
     -Weffc++ -pedantic-errors main.cpp \
     -o oathgen_openbsd_$(uname -m) \
     /usr/lib/libcryptopp.a
