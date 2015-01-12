@@ -4,15 +4,15 @@ Oathgen is a command line HOTP and TOTP one-time password generator for BSD,
 Linux, Mac and Windows operating systems. The goal of oathgen is to be 
 complete, standard and portable.
 
-Oathgen generates OTPs in six, seven or eight digit lengths in the following 
-formats.
+Oathgen generates one-time passwords in six, seven or eight digit lengths in
+the following formats.
     
     1. HOTP HMAC-SHA1
     2. TOTP HMAC-SHA1 
     3. TOTP HMAC-SHA256 
     4. TOTP HMAC-SHA512 
 
-* Groups, Standards and RFCs
+* Groups, Specifications and RFCs
 
     http://www.openauthentication.org/
     http://tools.ietf.org/html/rfc4226
@@ -47,8 +47,8 @@ command line. We also pass the HOTP count (-c 1).
 
     oathgen -s /home/user/.oathgen/hex_test_secret.txt -f -l 7 -c 1 -hotp -hex
 
-Generate a six digit HMAC-SHA512 TOTP. In this example, we specify (-hmac sha512) 
-so that HMAC-SHA512 is used rather than HMAC-SHA1. The -hmac flag accepts sha1 
+Generate a six digit HMAC-SHA512 TOTP. In this example, we specify (-hmac sha512)
+so that HMAC-SHA512 is used rather than HMAC-SHA1. The -hmac flag accepts sha1
 (the default) sha256 and sha512.
 
     oathgen -s /home/user/.oathgen/base32_test_secret.txt -f -hmac sha512 
@@ -69,7 +69,7 @@ and 64 bytes for HMAC-SHA512. However, many TOTP implementations, use smaller
 keys. In fact, 10 byte secrets seem more common than 20 byte secrets for TOTP
 HMAC-SHA1. Of the five services I tested, three used 10 byte secrets. The other
 two services used 20 byte secrets, both were Google. Really, the RFC should
-mandate the secret size to avoid this sort of thing.
+mandate the secret size.
 
 A friend just pointed out that the RFC has errata. This explains the extension
 confusion. There are three different test secrets, not one.
