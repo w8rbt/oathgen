@@ -12,6 +12,11 @@
 #        (MSVC++) compiler is typically used to build oathgen. 
 #        Mingw on Windows can compile oathgen too.
 
+if [ $# -eq 0 ]; then
+    echo "usage $0 <system>"
+    exit 1
+fi
+
 if [ $1 == 'Linux' -o $1 == 'linux' ]
     then g++ -static -std=c++11 -Wall -Wextra -Werror \
     -Weffc++ -pedantic-errors main.cpp \
