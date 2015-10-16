@@ -65,6 +65,14 @@ so that HMAC-SHA512 is used rather than HMAC-SHA1. The -hmac flag accepts sha1
 
 * Secret and Secret File Notes
 
+Oathgen can read a secret as a command line argument, from a text file or from
+stdin. In all cases, oathgen expects the secret to be either hex or base32
+encoded.
+
+    Argument:   oathgen -s GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ
+    From File:  oathgen -f -s /path/to/file.txt
+    From Stdin: cat file.txt | oathgen -s stdin 
+
 The secret is used as the HMAC key. The counter (aka moving factor) is used as 
 the HMAC message. The TOTP RFC states, "Keys SHOULD be of the length of the 
 HMAC output to facilitate interoperability." This means that the decoded secret
@@ -89,6 +97,12 @@ The secret files should be read-only by the file's owner. No other user should
 be able to read the secret files. Secret files should have 0400 permissions on 
 most systems and should be stored in user home folders. It's good practice to 
 treat OATH secret files as if they were private ssh key files.
+
+As of version 1.0.4, oathgen can read the secret from stdin. The most secure
+way to store secrets is to encrypt them with your PGP key and when needed, 
+decrypt and pipe the secret directly to oathgen. Here's an example:
+
+    gpg -d -q secret.asc | oathgen -s stdin
 
 For portability, you may place the secret files on an encrypted USB memory 
 stick and carry that with you from system to system. If you do this, it's also 
