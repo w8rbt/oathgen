@@ -31,9 +31,13 @@ Run verbose tests.
 
 Generate a six digit HMAC-SHA1 TOTP from a base32 encoded secret using a 30 
 second timestep. This is basically 'Google Authenticator' and is the default 
-mode for oathgen.
+mode for oathgen. Here, the secret is provided as a command line argument.
 
     oathgen -s GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ 
+
+Same as above, except the secret is passed via stdin
+
+    cat base32_test_secret.txt | oathgen -s stdin
 
 Generate an eight digit HMAC-SHA1 TOTP from a hex encoded secret. In this 
 example, we override the default OTP length (-l 8) and the default encoding 
@@ -43,7 +47,7 @@ example, we override the default OTP length (-l 8) and the default encoding
 
 Generate a seven digit HMAC-SHA1 HOTP. Here we override TOTP by specifying 
 (-hotp) and the secret is stored in a file (-f) rather than passed on the 
-command line. We also pass the HOTP count (-c 1).
+command line as an argument. We also pass the HOTP count (-c 1).
 
     oathgen -s /home/user/.oathgen/hex_test_secret.txt -f -l 7 -c 1 -hotp -hex
 

@@ -119,6 +119,7 @@ std::int32_t main( std::int32_t argc, char * argv[] )
 
     if( get_value( flags, "-s", m_sec ) )
     {
+        // Read secret from file
         if ( do_file )
         {
             std::ifstream fp ( m_sec );
@@ -136,6 +137,13 @@ std::int32_t main( std::int32_t argc, char * argv[] )
             }
         }
 
+        // Read secret from stdin
+        else if ( m_sec == "stdin" )
+        {
+            std::getline( std::cin, secret );
+        }
+
+        // Read secret from command line argument
         else
         {
             secret = m_sec;

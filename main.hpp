@@ -39,12 +39,12 @@ std::string       m_ts               = "";
 std::string       m_sec              = "";
 std::string       secret             = "";
 
-const std::string version            = "oathgen version 1.0.3";
+const std::string version            = "oathgen version 1.0.4";
 const std::string help               = version + " flags:\n \
 -c    set the HOTP counter -c 1 (requires -hotp flag)\n \
 -d    show verbose debug output\n \
 -e    set the TOTP Unix epoch time in seconds -e 1 (default is 0)\n \
--f    read the secret from a text file rather than the command line\n \
+-f    read the secret from a text file or stdin rather than the command line\n \
 -h    show this help message\n \
 -hex  use hex to decode the secret (default is base32)\n \
 -hmac set the TOTP HMAC type. sha1, sha256 or sha512 (default is sha1)\n \
