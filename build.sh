@@ -48,8 +48,17 @@ if [ $1 == 'FreeBSD' -o $1 == 'freebsd' ]
     strip oathgen_freebsd_$(uname -m)
 fi
 
-if [ $1 == 'Mac' -o $1 == 'mac' ]
-    then echo nothing yet
+if [ $1 == 'Mac' -o $1 == 'mac' ]; then
+    if [ ! -f /usr/local/lib/libcryptopp.a ]; then
+      echo "/usr/local/lib/libcryptopp.a not found."
+      echo "Have you installed it, e.g. via brew?"
+    fi
+    g++ -std=c++11 -Wall -Wextra -Werror \
+    -Weffc++ -pedantic-errors main.cpp \
+    -isystem /usr/local/include \
+    -o oathgen_mac \
+    /usr/local/lib/libcryptopp.a
+    strip oathgen_mac
 fi
 
 if [ $1 == 'Windows' -o $1 == 'windows' ]
