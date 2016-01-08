@@ -23,6 +23,8 @@
 
 #include "global.hpp"
 
+static const byte B32_ALPHABET[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
+
 template <typename number>
 number strtonum( const std::string& s )
 {
@@ -68,10 +70,20 @@ const std::string decode( const std::string& secret, const bool hex_encode )
             std::cout << "decode - decoded secret size: " << decoded.size() << "\n";
         }
     }
-
     else
     {
+        static volatile bool initialized = false;
+        static int decoding_array[256];
+        if ( !initialized )
+        {
+            CryptoPP::Base32Decoder::InitializeDecodingLookupArray(decoding_array, B32_ALPHABET, 32, true);
+            initialized = true;
+        }
+
         CryptoPP::Base32Decoder b32decoder;
+        b32decoder.Initialize(
+            CryptoPP::MakeParameters(CryptoPP::Name::DecodingLookupArray(), *decoding_array, true)
+                                    (CryptoPP::Name::Log2Base(), 5, true));
         b32decoder.Attach( new CryptoPP::StringSink( decoded ) );
         b32decoder.Put( (std::uint8_t*)secret.c_str(), secret.size() );
         b32decoder.MessageEnd();
