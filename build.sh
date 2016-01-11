@@ -17,6 +17,13 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 
+if [ $1 == 'b32' -o $1 == 'b32' ]
+    then g++ -g -g3 -std=c++11 -Wall -Wextra -Werror \
+    -Weffc++ -pedantic-errors base32_test.cpp \
+    -o b32_test \
+    /usr/lib/libcryptopp.so
+fi
+
 if [ $1 == 'Linux' -o $1 == 'linux' ]
     then g++ -static -std=c++11 -Wall -Wextra -Werror \
     -Weffc++ -pedantic-errors main.cpp \
