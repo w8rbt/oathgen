@@ -17,11 +17,14 @@
 
 
 static const byte ALPHABET[]          = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567"; // RFC4648
+
 static const std::string test_encoded = "GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ";
-static const std::string test_decoded = "12345678901234567890";
+static const std::string test_raw     = "12345678901234567890";
 
 const std::string encode( const std::string& raw )
 {
+    // This function correctly encodes RFC4648
+
     std::string encoded;
 
     CryptoPP::Base32Encoder b32encoder;
@@ -66,10 +69,10 @@ const std::string decode( const std::string& encoded )
 int main()
 {
     // Test encoding
-    const std::string e = encode("12345678901234567890");
+    const std::string e = encode( test_raw );
     if( e == test_encoded )
     {
-        std::cout << e << " RFC4648 Encoding works!\n";
+        std::cout << "'" << test_raw << "' encodes to '" << e << "' RFC4648 Encoding works!\n";
     }
     else
     {
@@ -77,8 +80,8 @@ int main()
     }
 
     // Test decoding
-    const std::string d = decode("GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ");
-    if( d == test_decoded )
+    const std::string d = decode( test_encoded );
+    if( d == test_raw )
     {
         std::cout << d << " RFC4648 Decoding works!\n";
     }
