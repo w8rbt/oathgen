@@ -56,7 +56,7 @@ if [ $1 == 'FreeBSD' -o $1 == 'freebsd' ]
 fi
 
 if [ $1 == 'Mac' -o $1 == 'mac' ]
-    g++ -std=c++11 -Wall -Wextra -Werror \
+    then g++ -std=c++11 -Wall -Wextra -Werror \
     -Weffc++ -pedantic-errors main.cpp \
     -isystem /usr/local/include \
     -o oathgen_mac \
