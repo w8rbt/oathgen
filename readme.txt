@@ -141,3 +141,4 @@ oathgen version 1.0.3 flags:
  -ts   set the TOTP time step in seconds -ts 10 (default is 30)
  -v    show version and exit
 
+
