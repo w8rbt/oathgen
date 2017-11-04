@@ -18,8 +18,8 @@
 #include <sstream>
 #include <string>
 
-#include <cryptopp/alt_base32.h>
 #include <cryptopp/hex.h>
+#include <cryptopp/base32.h>
 
 #include "global.hpp"
 
@@ -71,7 +71,7 @@ const std::string decode( const std::string& secret, const bool hex_encode )
 
     else
     {
-        CryptoPP::AltBase32Decoder b32decoder;
+        CryptoPP::Base32Decoder b32decoder;
         b32decoder.Attach( new CryptoPP::StringSink( decoded ) );
         b32decoder.Put( (std::uint8_t*)secret.c_str(), secret.size() );
         b32decoder.MessageEnd();

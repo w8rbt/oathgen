@@ -26,7 +26,7 @@
 #include "main.hpp"
 #include "oath.hpp"
 #include "strings.hpp"
-#include "test.hpp"
+#include "../test.hpp"
 
 std::int32_t main( std::int32_t argc, char * argv[] )
 {

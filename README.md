@@ -1,4 +1,5 @@
-* Introduction
+# oathgen
+## Introduction
 
 Oathgen is a command line HOTP and TOTP one-time password generator for BSD, 
 Linux, Mac and Windows operating systems. The goal of oathgen is to be 
@@ -7,18 +8,18 @@ complete, standard and portable.
 Oathgen generates one-time passwords in six, seven or eight digit lengths in
 the following formats.
     
-    1. HOTP HMAC-SHA1
-    2. TOTP HMAC-SHA1 
-    3. TOTP HMAC-SHA256 
-    4. TOTP HMAC-SHA512 
+  - HOTP HMAC-SHA1
+  - TOTP HMAC-SHA1 
+  - TOTP HMAC-SHA256 
+  - TOTP HMAC-SHA512 
 
-* Groups, Specifications and RFCs
+## Groups, Specifications and RFCs
 
-    http://www.openauthentication.org/
-    http://tools.ietf.org/html/rfc4226
-    http://tools.ietf.org/html/rfc6238
+  - http://www.openauthentication.org/
+  - http://tools.ietf.org/html/rfc4226
+  - http://tools.ietf.org/html/rfc6238
 
-* Some usage examples
+## Some usage examples
 
 Show the help menu or see what version of oathgen you have.
 
@@ -57,13 +58,15 @@ so that HMAC-SHA512 is used rather than HMAC-SHA1. The -hmac flag accepts sha1
 
     oathgen -s /home/user/.oathgen/base32_test_secret.txt -f -hmac sha512 
 
-* The HMAC-SHA1 Test Secret (See TOTP Errata for all three test secrets) 
+## The HMAC-SHA1 Test Secret (See TOTP Errata for all three test secrets) 
 
+```
     B32:       GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ 
     Hex:       3132333435363738393031323334353637383930 
     Unencoded: 12345678901234567890
+```
 
-* Secret and Secret File Notes
+## Secret and Secret File Notes
 
 Oathgen can read a secret as a command line argument, from a text file or from
 stdin. In all cases, oathgen expects the secret to be either hex or base32
@@ -86,7 +89,7 @@ mandate the secret size.
 A friend just pointed out that the RFC has errata. This explains the extension
 confusion. There are three different test secrets, not one.
 
-    http://www.rfc-editor.org/errata_search.php?rfc=6238.  
+  <http://www.rfc-editor.org/errata_search.php?rfc=6238.>  
 
 When storing secrets in text files, only store one secret per file. The secret 
 should be on one line by itself with no spaces or dashes between the 
@@ -109,7 +112,7 @@ stick and carry that with you from system to system. If you do this, it's also
 a good idea to carry statically linked copies of the oathgen binary on the same 
 memory stick.
 
-* Type Notes
+## Type Notes
 
 The HOTP 'counter' (aka moving factor), the Unix epoch time, the time step
 and the time now variables are all 8-byte 64-bit signed integers.
@@ -123,8 +126,9 @@ or a system where the built-in test cases do not work, submit a bug report.
 Oathgen has been built and tested on i386, amd64, Sparc64 and 32-bit ARM. Other
 platforms should work too.
 
-* Options
+## Options
 
+```
 oathgen version 1.0.3 flags:
  -c    set the HOTP counter -c 1 (requires -hotp flag)
  -d    show verbose debug output
@@ -140,5 +144,4 @@ oathgen version 1.0.3 flags:
  -tn   set the TOTP time in seconds -tn 1 (default is now)
  -ts   set the TOTP time step in seconds -ts 10 (default is 30)
  -v    show version and exit
-
-
+```
