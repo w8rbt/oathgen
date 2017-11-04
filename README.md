@@ -60,9 +60,11 @@ so that HMAC-SHA512 is used rather than HMAC-SHA1. The -hmac flag accepts sha1
 
 * The HMAC-SHA1 Test Secret (See TOTP Errata for all three test secrets) 
 
+```
     B32:       GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ 
     Hex:       3132333435363738393031323334353637383930 
     Unencoded: 12345678901234567890
+```
 
 * Secret and Secret File Notes
 
@@ -87,7 +89,7 @@ mandate the secret size.
 A friend just pointed out that the RFC has errata. This explains the extension
 confusion. There are three different test secrets, not one.
 
-    http://www.rfc-editor.org/errata_search.php?rfc=6238.  
+  <http://www.rfc-editor.org/errata_search.php?rfc=6238.>  
 
 When storing secrets in text files, only store one secret per file. The secret 
 should be on one line by itself with no spaces or dashes between the 
