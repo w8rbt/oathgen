@@ -1,6 +1,8 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
 project(oathgen)
 
+set(CMAKE_CXX_STANDARD 11)
+
 find_library(CryptoPP crypto++)
 
 if (CryptoPP-NOTFOUND)
