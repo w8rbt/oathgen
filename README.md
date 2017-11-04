@@ -58,7 +58,7 @@ so that HMAC-SHA512 is used rather than HMAC-SHA1. The -hmac flag accepts sha1
 
     oathgen -s /home/user/.oathgen/base32_test_secret.txt -f -hmac sha512 
 
-* The HMAC-SHA1 Test Secret (See TOTP Errata for all three test secrets) 
+## The HMAC-SHA1 Test Secret (See TOTP Errata for all three test secrets) 
 
 ```
     B32:       GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ 
@@ -66,7 +66,7 @@ so that HMAC-SHA512 is used rather than HMAC-SHA1. The -hmac flag accepts sha1
     Unencoded: 12345678901234567890
 ```
 
-* Secret and Secret File Notes
+## Secret and Secret File Notes
 
 Oathgen can read a secret as a command line argument, from a text file or from
 stdin. In all cases, oathgen expects the secret to be either hex or base32
@@ -112,7 +112,7 @@ stick and carry that with you from system to system. If you do this, it's also
 a good idea to carry statically linked copies of the oathgen binary on the same 
 memory stick.
 
-* Type Notes
+## Type Notes
 
 The HOTP 'counter' (aka moving factor), the Unix epoch time, the time step
 and the time now variables are all 8-byte 64-bit signed integers.
