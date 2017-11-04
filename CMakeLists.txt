@@ -18,7 +18,7 @@ else()
 endif()
 
 file(GLOB OATHGEN_SRC src/*.hpp src/*.cpp)
-file(GLOB OATHGEN_B32_TEST src/*.hpp src/*.cpp)
+file(GLOB OATHGEN_B32_TEST base32test/*.hpp base32test/*.cpp)
 
 add_executable(oathgen ${OATHGEN_SRC})
 add_executable(base32test ${OATHGEN_B32_TEST})
