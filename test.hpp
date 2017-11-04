@@ -20,7 +20,7 @@
 #include <string>
 #include <vector>
 
-#include "global.hpp"
+#include "src/global.hpp"
 
 const std::string test_sha1_secret       = "12345678901234567890";
 const std::string test_sha256_secret     = "12345678901234567890123456789012";
