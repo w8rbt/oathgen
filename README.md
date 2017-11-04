@@ -1,4 +1,5 @@
-* Introduction
+# oathgen
+## Introduction
 
 Oathgen is a command line HOTP and TOTP one-time password generator for BSD, 
 Linux, Mac and Windows operating systems. The goal of oathgen is to be 
@@ -7,18 +8,18 @@ complete, standard and portable.
 Oathgen generates one-time passwords in six, seven or eight digit lengths in
 the following formats.
     
-    1. HOTP HMAC-SHA1
-    2. TOTP HMAC-SHA1 
-    3. TOTP HMAC-SHA256 
-    4. TOTP HMAC-SHA512 
+  - HOTP HMAC-SHA1
+  - TOTP HMAC-SHA1 
+  - TOTP HMAC-SHA256 
+  - TOTP HMAC-SHA512 
 
-* Groups, Specifications and RFCs
+## Groups, Specifications and RFCs
 
-    http://www.openauthentication.org/
-    http://tools.ietf.org/html/rfc4226
-    http://tools.ietf.org/html/rfc6238
+  - http://www.openauthentication.org/
+  - http://tools.ietf.org/html/rfc4226
+  - http://tools.ietf.org/html/rfc6238
 
-* Some usage examples
+## Some usage examples
 
 Show the help menu or see what version of oathgen you have.
 
@@ -123,8 +124,9 @@ or a system where the built-in test cases do not work, submit a bug report.
 Oathgen has been built and tested on i386, amd64, Sparc64 and 32-bit ARM. Other
 platforms should work too.
 
-* Options
+## Options
 
+```
 oathgen version 1.0.3 flags:
  -c    set the HOTP counter -c 1 (requires -hotp flag)
  -d    show verbose debug output
@@ -140,5 +142,4 @@ oathgen version 1.0.3 flags:
  -tn   set the TOTP time in seconds -tn 1 (default is now)
  -ts   set the TOTP time step in seconds -ts 10 (default is 30)
  -v    show version and exit
-
-
+```
