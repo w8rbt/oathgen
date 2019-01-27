@@ -125,7 +125,7 @@ platforms should work too.
 
 * Options
 
-oathgen version 1.0.3 flags:
+oathgen version 1.1 flags:
  -c    set the HOTP counter -c 1 (requires -hotp flag)
  -d    show verbose debug output
  -e    set the TOTP Unix epoch time in seconds -e 1 (default is 0)
@@ -135,10 +135,9 @@ oathgen version 1.0.3 flags:
  -hmac set the TOTP HMAC type. sha1, sha256 or sha512 (default is sha1)
  -hotp use hotp (default mode is totp)
  -l    set the length of OTP -l 8 (default is 6)
- -s    the hex or base32 encoded secret or the file that contains it
+ -s    the hex or base32 encoded secret or the file that contains it or the string 'stdin'
  -t    run tests (use with -d flag for verbose output)
  -tn   set the TOTP time in seconds -tn 1 (default is now)
  -ts   set the TOTP time step in seconds -ts 10 (default is 30)
  -v    show version and exit
-
 

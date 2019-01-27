@@ -3,6 +3,6 @@ compiler. See the 'build.sh' script for the exact compiler options. Oathgen has
 been built on g++, clang++ and MSVC++ compilers, but other C++11 compilers may 
 work too.
 
-Oathgen uses the Crypto++ library for hexadecimal and base32 decoding and 
+Oathgen uses the Crypto++ 8.0 library for hexadecimal and base32 decoding and 
 HMAC-SHA1 and SHA2. 
 
