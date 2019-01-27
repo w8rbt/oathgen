@@ -4,5 +4,8 @@ been built on g++, clang++ and MSVC++ compilers, but other C++11 compilers may
 work too.
 
 Oathgen uses the Crypto++ 8.0 library for hexadecimal and base32 decoding and 
-HMAC-SHA1 and SHA2. 
+HMAC-SHA1 and SHA2. Older versions of Crypto++ may not work due to a bug with
+base32 encoding:
+
+    https://github.com/weidai11/cryptopp/issues/108
 
