@@ -55,22 +55,22 @@ const std::vector<std::uint8_t> hotp( const std::string& secret,
     std::vector<std::uint8_t>        result_256(32);
     std::vector<std::uint8_t>        result_512(64);
 
-	CryptoPP::HMAC<CryptoPP::SHA1>   mac_160;
-	CryptoPP::HMAC<CryptoPP::SHA256> mac_256;
-	CryptoPP::HMAC<CryptoPP::SHA512> mac_512;
+    CryptoPP::HMAC<CryptoPP::SHA1>   mac_160;
+    CryptoPP::HMAC<CryptoPP::SHA256> mac_256;
+    CryptoPP::HMAC<CryptoPP::SHA512> mac_512;
 
-	mac_160.SetKey( (const std::uint8_t*)secret.c_str(), secret.size() );
+    mac_160.SetKey( (const std::uint8_t*)secret.c_str(), secret.size() );
     mac_160.CalculateDigest( &result_160[0], counter_array, 8 );
 
-	mac_256.SetKey( (const std::uint8_t*)secret.c_str(), secret.size() );
+    mac_256.SetKey( (const std::uint8_t*)secret.c_str(), secret.size() );
     mac_256.CalculateDigest( &result_256[0], counter_array, 8 );
 
-	mac_512.SetKey( (const std::uint8_t*)secret.c_str(), secret.size() );
+    mac_512.SetKey( (const std::uint8_t*)secret.c_str(), secret.size() );
     mac_512.CalculateDigest( &result_512[0], counter_array, 8 );
 
-	if( hmac_type == 160 ) {return result_160;}
-	if( hmac_type == 256 ) {return result_256;}
-	if( hmac_type == 512 ) {return result_512;}
+    if( hmac_type == 160 ) {return result_160;}
+    if( hmac_type == 256 ) {return result_256;}
+    if( hmac_type == 512 ) {return result_512;}
 
     return result_160;
 }
