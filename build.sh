@@ -11,6 +11,7 @@
 #        On Windows, the free Visual Studio Community Edition
 #        (MSVC++) compiler is typically used to build oathgen. 
 #        Mingw on Windows can compile oathgen too.
+#
 
 if [ $# -eq 0 ]; then
     echo "usage $0 <system>"
