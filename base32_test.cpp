@@ -14,12 +14,20 @@
 
 // Note - Alternate alphabet encoding works, but decoding fails
 // with a stack overflow.
+//
+// Edit - Jan 2019. Tested this code with CryptoPP 8.0 release. 
+// It works correctly. Oathgen will migrate to 8.0 and discard
+// the alt base32 work-around. Need to use CryptoPP::byte rather
+// than plain byte now due to std::byte in C++17:
+// https://www.cryptopp.com/wiki/Std::byte#Fixing_Programs
+
+// To build: g++ base32_test.cpp -std=c++11 -lcryptopp
 
 
-static const byte ALPHABET[]          = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567"; // RFC4648
+static const CryptoPP::byte ALPHABET[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567"; // RFC4648
 
-static const std::string test_encoded = "GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ";
-static const std::string test_raw     = "12345678901234567890";
+static const std::string test_encoded  = "GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ";
+static const std::string test_raw      = "12345678901234567890";
 
 const std::string encode( const std::string& raw )
 {
@@ -30,7 +38,7 @@ const std::string encode( const std::string& raw )
     CryptoPP::Base32Encoder b32encoder;
     CryptoPP::AlgorithmParameters ep = CryptoPP::MakeParameters(
                                        CryptoPP::Name::EncodingLookupArray(),
-                                       (const byte *)ALPHABET,
+                                       (const CryptoPP::byte *)ALPHABET,
                                        false);
     b32encoder.IsolatedInitialize(ep);
 
