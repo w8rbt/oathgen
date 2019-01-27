@@ -28,7 +28,7 @@ if [ $1 == 'Linux' -o $1 == 'linux' ]
     then g++ -static -std=c++11 -Wall -Wextra -Werror \
     -Weffc++ -pedantic-errors main.cpp \
     -o oathgen_linux_$(uname -m) \
-    /usr/lib/libcryptopp.a
+    -lcryptopp
     strip oathgen_linux_$(uname -m)
 fi
 
