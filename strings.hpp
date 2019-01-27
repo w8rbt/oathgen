@@ -23,6 +23,8 @@
 
 #include "global.hpp"
 
+static const CryptoPP::byte ALPHABET[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567"; // RFC4648
+
 template <typename number>
 number strtonum( const std::string& s )
 {
@@ -72,6 +74,20 @@ const std::string decode( const std::string& secret, const bool hex_encode )
     else
     {
         CryptoPP::Base32Decoder b32decoder;
+
+        static int decoding_array[256];
+        CryptoPP::Base32Decoder::InitializeDecodingLookupArray(decoding_array, 
+                                   ALPHABET, 
+                                   32, 
+                                   true); // false = case insensitive
+
+        CryptoPP::AlgorithmParameters dp = CryptoPP::MakeParameters(
+                                           CryptoPP::Name::DecodingLookupArray(),
+                                           (const int *)decoding_array,
+                                           false);
+        b32decoder.IsolatedInitialize(dp); 
+
+
         b32decoder.Attach( new CryptoPP::StringSink( decoded ) );
         b32decoder.Put( (std::uint8_t*)secret.c_str(), secret.size() );
         b32decoder.MessageEnd();
