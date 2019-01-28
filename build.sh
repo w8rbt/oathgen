@@ -6,12 +6,9 @@
 #
 #        Change shebang to /bin/sh for OpenBSD and FreeBSD.
 #
-#        If -std=C++11 fails on some compilers, -std=c++0x may work.
-#
 #        On Windows, the free Visual Studio Community Edition
 #        (MSVC++) compiler is typically used to build oathgen. 
 #        Mingw on Windows can compile oathgen too.
-#
 
 if [ $# -eq 0 ]; then
     echo "usage $0 <system>"
@@ -22,7 +19,7 @@ if [ $1 == 'b32' -o $1 == 'b32' ]
     then g++ -g -g3 -std=c++11 -Wall -Wextra -Werror \
     -Weffc++ -pedantic-errors base32_test.cpp \
     -o b32_test \
-    /usr/lib/libcryptopp.so
+    -lcryptopp
 fi
 
 if [ $1 == 'Linux' -o $1 == 'linux' ]
@@ -34,10 +31,10 @@ if [ $1 == 'Linux' -o $1 == 'linux' ]
 fi
 
 if [ $1 == 'Linux_debug' -o $1 == 'linux_debug' ]
-    then g++ -std=c++11 -Wall -Wextra -Werror \
+    then g++ -g -g3 -std=c++11 -Wall -Wextra -Werror \
     -Weffc++ -pedantic-errors main.cpp \
     -o oathgen_linux_$(uname -m)_debug \
-    /usr/lib/libcryptopp.a
+    -lcryptopp
 fi
 
 if [ $1 == 'OpenBSD' -o $1 == 'openbsd' ]
