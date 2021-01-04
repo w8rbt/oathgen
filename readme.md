@@ -6,4 +6,6 @@ Oathgen is written in C++11. In order to build oathgen, you must use a C++11 com
 
 Oathgen uses the [Crypto++ 8.0](https://cryptopp.com/) library for hexadecimal and base32 decoding and HMAC-SHA1 and SHA2. Older versions of Crypto++ may not work due to a [bug with base32 encoding](https://github.com/weidai11/cryptopp/issues/108)
 
+If you only want **Google Authenticator** functionality and like Go, you may try [goathgen](https://github.com/62726164/goathgen).
+
 To learn more about oathgen, read my [blog post](https://www.go350.com/posts/oathgen/).
