@@ -1,6 +1,6 @@
 # oathgen
 
-[oathgen](https://github.com/62726164/oathgen) is a command line [HOTP](https://tools.ietf.org/html/rfc4226) and [TOTP](https://tools.ietf.org/html/rfc6238) one-time password generator for BSD, Linux, Mac and Windows operating systems. The goal of oathgen is to be complete, standard and portable.
+[Oathgen](https://www.go350.com/posts/oathgen/) is a command line [HOTP](https://tools.ietf.org/html/rfc4226) and [TOTP](https://tools.ietf.org/html/rfc6238) one-time password generator for BSD, Linux, Mac and Windows operating systems. The goal of oathgen is to be complete, standard and portable.
 
 Oathgen is written in C++11. In order to build oathgen, you must use a C++11 compiler. See the **build.sh** script for the exact compiler options. Oathgen has been built on g++, clang++ and MSVC++ compilers, but other C++11 compilers may work too.
 
